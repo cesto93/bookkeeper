@@ -312,4 +312,9 @@
       </build>
     </profile>
   </profiles>
+
+  <!-- jacoco properties -->
+  <properties>
+    <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
+  </properties>
 </project>
