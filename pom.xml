@@ -111,7 +111,7 @@
     <redirectTestOutputToFile>true</redirectTestOutputToFile>
     <testRetryCount>2</testRetryCount>
 
-    <<!-- jacoco -->
+    <!-- jacoco -->
     <aggregate.report.dir>tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
 
     <!-- dependencies -->
