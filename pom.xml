@@ -1040,14 +1040,6 @@
                   <goal>prepare-agent</goal>
                 </goals>
               </execution>
-              <!-- added for merging coverage -->
-              <execution>
-                <id>report</id>
-                <goals>
-                  <goal>report-aggregate</goal>
-                </goals>
-                <phase>verify</phase>
-              </execution>
             </executions>
           </plugin>
         </plugins>
@@ -1151,12 +1143,14 @@
 								<goal>prepare-agent</goal>
 							</goals>
 						</execution>
-						<execution>
-							<id>report</id>
-							<goals>
-								<goal>report</goal>
-							</goals>
-						</execution>
+                      <!-- added for merging coverage -->
+                      <execution>
+                        <id>report</id>
+                        <goals>
+                          <goal>report-aggregate</goal>
+                        </goals>
+                        <phase>verify</phase>
+                      </execution>
 					</executions>
 				</plugin>
 			</plugins>
