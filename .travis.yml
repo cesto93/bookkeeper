@@ -2,6 +2,10 @@ language: java
 install: true
 jdk:
   - openjdk8
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2  
 addons:
   sonarcloud:
     organization: "cesto93"
