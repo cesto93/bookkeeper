@@ -112,7 +112,7 @@
     <testRetryCount>2</testRetryCount>
 
     <!-- jacoco -->
-    <aggregate.report.dir>tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+    <aggregate.report.dir>target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
 
     <!-- dependencies -->
     <arquillian-cube.version>1.18.2</arquillian-cube.version>
@@ -828,6 +828,14 @@
             </execution>
           </executions>
         </plugin>
+
+        <!-- jacoco-->
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.4</version>
+        </plugin>
+
       </plugins>
     </pluginManagement>
     <plugins>
@@ -1135,7 +1143,6 @@
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.8.3</version>
 					<executions>
 						<execution>
 							<id>prepare-agent</id>
