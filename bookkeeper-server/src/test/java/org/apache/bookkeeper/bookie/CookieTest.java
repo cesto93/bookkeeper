@@ -1,11 +1,10 @@
-package org.apache.bookkeeper;
+package org.apache.bookkeeper.bookie;
 
-import org.apache.bookkeeper.bookie.Cookie;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TestCookie {
+public class CookieTest {
 
     @Test
     public void testEncodeDirPaths() {
