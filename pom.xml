@@ -112,8 +112,8 @@
     <testRetryCount>2</testRetryCount>
 
     <!-- jacoco -->
-    <aggregate.report.dir>target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
-    <sonar.coverage.jacoco.xmlReportPaths>${basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
+    <aggregate.report.dir>tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+
 
     <!-- dependencies -->
     <arquillian-cube.version>1.18.2</arquillian-cube.version>
@@ -1154,14 +1154,6 @@
 								<goal>prepare-agent</goal>
 							</goals>
 						</execution>
-                      <!-- added for merging coverage -->
-                      <execution>
-                        <id>report</id>
-                        <goals>
-                          <goal>report-aggregate</goal>
-                        </goals>
-                        <phase>verify</phase>
-                      </execution>
 					</executions>
 				</plugin>
 			</plugins>
