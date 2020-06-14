@@ -1139,6 +1139,9 @@
     <!-- Profile for code coverage on sonar -->
 	<profile>
 		<id>coverage</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
 		<build>
 			<plugins>
 				<plugin>
