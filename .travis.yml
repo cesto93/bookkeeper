@@ -11,4 +11,4 @@ addons:
     organization: "cesto93"
     token: $SONAR_TOKEN
 script:
-  - mvn clean verify install sonar:sonar -Dsonar.projectKey=$PROJECT_KEY
+  - mvn clean verify sonar:sonar -Dsonar.projectKey=$PROJECT_KEY
