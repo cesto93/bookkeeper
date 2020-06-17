@@ -10,12 +10,12 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class CookieTestVerifyIsSuperset extends CookieTestUtils {
+public class CookieVerifyIsSupersetTest extends CookieTestUtils {
     private Cookie cookie1;
     private Cookie cookie2;
     private boolean expectedTestFail;
 
-    public CookieTestVerifyIsSuperset(Cookie cookie1, Cookie cookie2, boolean expectedTestFail) {
+    public CookieVerifyIsSupersetTest(Cookie cookie1, Cookie cookie2, boolean expectedTestFail) {
         this.cookie1 = cookie1;
         this.cookie2 = cookie2;
         this.expectedTestFail = expectedTestFail;
