@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.runners.Parameterized.*;
 
 @RunWith(Parameterized.class)
 public class CookieVerifyTest extends CookieTestUtils {
@@ -21,25 +22,22 @@ public class CookieVerifyTest extends CookieTestUtils {
         this.expectedTestFail = expectedTestFail;
     }
 
-    @Parameterized.Parameters
-    public static Collection primeNumbers() {
+    @Parameters
+    public static Collection verifyParam() {
+        Cookie[] cookies1 = {
+                getCookie(2, null, null, null, null),
+                getCookie(3, "", "", "", ""),
+                getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2",
+                        "id")
+        };
 
         return Arrays.asList(new Object[][] {
-            {   getCookie(2, null, null, null, null),
-                getCookie(2, null, null, null, null),
-                true},
-            {   getCookie(3, "", "", "", ""),
-                getCookie(4, "host", "2\tdir1\tdir2", "2\tdir1\tdir2", "id"),
-                true},
-            {   getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2", "id"),
-                getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2", "id"),
-                false},
-            {   getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2", "id"),
-                getCookie(3, "host", "1\tdir1", "1\tdir2", "id"),
-                true},
-            {   getCookie(3, "host", "1\tdir1", "1\tdir2", "id"),
-                getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2", "id"),
-                true}
+                {   cookies1[0], cookies1[0], true},
+                {   cookies1[0], cookies1[2], true},
+                {   cookies1[1], cookies1[1], false},
+                {   cookies1[1], cookies1[2], true},
+                {   cookies1[2], cookies1[2], false},
+                {   cookies1[2], cookies1[1], true}
         });
     }
 
