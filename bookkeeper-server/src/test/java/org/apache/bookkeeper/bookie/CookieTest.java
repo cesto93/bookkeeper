@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-public class CookieTest extends  CookieTestUtils{
+public class CookieTest {
 
     private Cookie.Builder builder;
 

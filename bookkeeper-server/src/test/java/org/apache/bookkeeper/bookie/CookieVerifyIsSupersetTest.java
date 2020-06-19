@@ -27,7 +27,7 @@ public class CookieVerifyIsSupersetTest extends CookieTestUtils {
         Cookie[] cookies1 = {
                 getCookie(2, null, null, null, null),
                 getCookie(3, "", "", "", ""),
-                getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2",
+                getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2", "2\tdir1\tdir2",
                         "id")
         };
 
@@ -39,10 +39,10 @@ public class CookieVerifyIsSupersetTest extends CookieTestUtils {
                 {   cookies1[2], cookies1[2], false},
                 {   cookies1[2], cookies1[1], true},
                 {   cookies1[2],
-                        getCookie(3, "host", "2\tdir1\tdir2", "1\tdir2", "id"),
+                        getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2", "1\tdir2", "id"),
                         false},
                 {   cookies1[2],
-                        getCookie(3, "host", "2\tdir1\tdir2", "3\tdir1\tdir2\tdir3",
+                        getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2", "3\tdir1\tdir2\tdir3",
                                 "id"),
                         true}
         });

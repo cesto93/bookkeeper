@@ -27,7 +27,7 @@ public class CookieVerifyTest extends CookieTestUtils {
         Cookie[] cookies1 = {
                 getCookie(2, null, null, null, null),
                 getCookie(3, "", "", "", ""),
-                getCookie(3, "host", "2\tdir1\tdir2", "2\tdir1\tdir2",
+                getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2", "2\tdir1\tdir2",
                         "id")
         };
 
@@ -37,7 +37,12 @@ public class CookieVerifyTest extends CookieTestUtils {
                 {   cookies1[1], cookies1[1], false},
                 {   cookies1[1], cookies1[2], true},
                 {   cookies1[2], cookies1[2], false},
-                {   cookies1[2], cookies1[1], true}
+                {   cookies1[2], cookies1[1], true},
+
+                //added for covering all code
+                { cookies1[1], cookies1[0], true},
+                { cookies1[2],  getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
+                        "2\tdir1\tdir2", "id2"), true}
         });
     }
 
