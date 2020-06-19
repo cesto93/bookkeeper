@@ -81,7 +81,7 @@ public class CookieTest extends  CookieTestUtils{
     @Test public void testToString() {
         Cookie cookie3 = getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
                                     "2\tdir1\tdir2", "id");
-        assertEquals("3\n192.168.1.1:80\n2\tdir1\tdir2\n2\tdir1\tdir2\n", cookie3.toString());
+        assertEquals("4\n192.168.1.1:80\n2\tdir1\tdir2\n2\tdir1\tdir2\n", cookie3.toString());
         Cookie cookie4 = getCookie(4, "192.168.1.1:80", "2\tdir1\tdir2",
                 "2\tdir1\tdir2", "id");
         assertEquals("4\n" +
