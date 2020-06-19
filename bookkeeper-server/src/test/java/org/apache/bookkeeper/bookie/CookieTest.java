@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-public class CookieTest {
+public class CookieTest extends  CookieTestUtils{
 
     private Cookie.Builder builder;
 
@@ -75,6 +75,20 @@ public class CookieTest {
         } catch (IOException e) {
             System.out.println("Expected exception: " + e.getMessage());
         }
+
+    }
+
+    @Test public void testToString() {
+        Cookie cookie3 = getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
+                                    "2\tdir1\tdir2", "id");
+        assertEquals("3\n192.168.1.1:80\n2\tdir1\tdir2\n2\tdir1\tdir2\n", cookie3.toString());
+        Cookie cookie4 = getCookie(4, "192.168.1.1:80", "2\tdir1\tdir2",
+                "2\tdir1\tdir2", "id");
+        assertEquals("4\n" +
+                "bookieHost: \"192.168.1.1:80\"\n" +
+                "journalDir: \"2\\tdir1\\tdir2\"\n" +
+                "ledgerDirs: \"2\\tdir1\\tdir2\"\n" +
+                "instanceId: \"id\"\n", cookie4.toString());
 
     }
 }
