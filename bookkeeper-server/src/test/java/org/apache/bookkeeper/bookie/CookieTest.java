@@ -4,9 +4,11 @@ import org.apache.bookkeeper.conf.ServerConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
-public class CookieTest {
+public class CookieTest extends  CookieTestUtils{
 
     private Cookie.Builder builder;
 
@@ -48,5 +50,31 @@ public class CookieTest {
         Cookie cookie3 = builder.build();
         dirs = cookie3.getLedgerDirPathsFromCookie();
         assertEquals("", dirs[0]);
+    }
+
+    @Test
+    public void testIsBookieHostCreatedFromIp() throws IOException {
+        builder.setBookieHost("192.168.1.1:80");
+        Cookie fromIp = builder.build();
+        assertTrue(fromIp.isBookieHostCreatedFromIp());
+        builder.setBookieHost("www.google.com:80");
+        Cookie fromURL = builder.build();
+        assertFalse(fromURL.isBookieHostCreatedFromIp());
+
+        try {
+            builder.setBookieHost("msg");
+            builder.build().isBookieHostCreatedFromIp();
+            fail();
+        } catch (IOException e) {
+            System.out.println("Expected exception: " + e.getMessage());
+        }
+        try {
+            builder.setBookieHost("192.168.1.1:nAn");
+            builder.build().isBookieHostCreatedFromIp();
+            fail();
+        } catch (IOException e) {
+            System.out.println("Expected exception: " + e.getMessage());
+        }
+
     }
 }
