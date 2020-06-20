@@ -57,16 +57,4 @@ public class CookieVerifyTest extends CookieTestUtils {
         }
         assertEquals(expectedTestFail, testFail);
     }
-
-    @Test
-    public void TestVerifyIsSuperSet() {
-        boolean testFail = false;
-        try {
-            cookie1.verify(cookie2);
-        } catch (Exception e) {
-            System.out.println("Expected exception: " + e.getMessage());
-            testFail = true;
-        }
-        assertEquals(expectedTestFail, testFail);
-    }
 }
