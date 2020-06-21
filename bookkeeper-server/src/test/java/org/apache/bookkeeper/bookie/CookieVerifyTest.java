@@ -39,10 +39,21 @@ public class CookieVerifyTest extends CookieTestUtils {
                 {   cookies1[2], cookies1[2], false},
                 {   cookies1[2], cookies1[1], true},
 
-                //added for covering all code
+                //added after coverage analysis
                 { cookies1[1], cookies1[0], true},
                 { cookies1[2],  getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
-                        "2\tdir1\tdir2", "id2"), true}
+                        "2\tdir1\tdir2", "id2"), true},
+
+                //added after mutation analysis
+                {cookies1[2], getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
+                        "2\tdir1\tdir3", "id"), true},
+                {cookies1[2], getCookie(2, "192.168.1.1:80", "2\tdir1\tdir2",
+                        "2\tdir1\tdir3", "id2"), true},
+                {
+                    getCookie(2, "192.168.1.1:80", "2\tdir1\tdir2",
+                        "2\tdir1\tdir3", "id2"),
+                        getCookie(2, "192.168.1.1:80", "2\tdir1\tdir2",
+                        "2\tdir1\tdir3", "id2"), true}
         });
     }
 

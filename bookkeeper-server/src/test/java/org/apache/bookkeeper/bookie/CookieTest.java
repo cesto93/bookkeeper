@@ -89,6 +89,5 @@ public class CookieTest extends  CookieTestUtils{
                 "journalDir: \"2\\tdir1\\tdir2\"\n" +
                 "ledgerDirs: \"2\\tdir1\\tdir2\"\n" +
                 "instanceId: \"id\"\n", cookie4.toString());
-
     }
 }
