@@ -13,11 +13,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class WeightedRandomSelectionImplTest {
+public class UpdateMapTest {
+    int maxProbabilityMultiplier;
     Map<Object, WeightedObject> map;
     Map<Object, Double> res;
 
-    public WeightedRandomSelectionImplTest(Map<Object, WeightedObject> map, Map<Object, Double> res) {
+    public UpdateMapTest(int maxProbabilityMultiplier, Map<Object, WeightedObject> map, Map<Object, Double> res) {
+        this.maxProbabilityMultiplier = maxProbabilityMultiplier;
         this.map = map;
         this.res = res;
     }
@@ -39,13 +41,12 @@ public class WeightedRandomSelectionImplTest {
         Map<Object, Double> res3 = new HashMap<>();
         Map<Object, Double> res4 = new HashMap<>();
 
-        map1.put("1", getWeightedObject(1));
-        res1.put("1", 0.0);
+        res1.put(null, 0.0);
 
         map2.put("1", getWeightedObject(0));
-        map2.put("2", getWeightedObject(1));
+        map2.put("2", getWeightedObject(0));
         res2.put("1", 0.0);
-        res2.put("2", 1.0);
+        res2.put("2", 0.5);
 
         map3.put("1", getWeightedObject(2));
         map3.put("2", getWeightedObject(2));
@@ -62,10 +63,18 @@ public class WeightedRandomSelectionImplTest {
         res4.put("3", 1.0 / 6.0 + 2.0 / 6.0);
 
         return Arrays.asList(new Object[][] {
-                {map1, res1},
-                {map2, res2},
-                {map3, res3},
-                {map4, res4}
+                {-1, map1, res1},
+                {-1, map2, res2},
+                {-1, map3, res3},
+                {-1, map4, res4},
+                {0, map1, res1},
+                {0, map2, res2},
+                {0, map3, res3},
+                {0, map4, res4},
+                {1, map1, res1},
+                {1, map2, res2},
+                {1, map3, res3},
+                {1, map4, res4}
         });
     }
 
