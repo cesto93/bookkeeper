@@ -821,11 +821,15 @@
           <configuration>
             <targetClasses>
               <param>org.apache.bookkeeper.bookie.Cookie</param>
+              <param>org.apache.bookkeeper.client.WeightedRandomSelectionImpl</param>
             </targetClasses>
             <targetTests>
               <param>org.apache.bookkeeper.bookie.CookieTest</param>
               <param>org.apache.bookkeeper.bookie.CookieVerifyTest</param>
               <param>org.apache.bookkeeper.bookie.CookieVerifyIsSupersetTest</param>
+              <param>org.apache.bookkeeper.client.GetNextRandomTest</param>
+              <param>org.apache.bookkeeper.client.UpdateMapTest</param>
+              <param>org.apache.bookkeeper.client.WeightedRandomSelectionImplTest</param>
             </targetTests>
           </configuration>
         </plugin>

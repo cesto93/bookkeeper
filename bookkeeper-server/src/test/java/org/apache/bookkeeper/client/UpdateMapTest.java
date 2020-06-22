@@ -75,8 +75,6 @@ public class UpdateMapTest {
         res5.put("3", 0.5);
         res5.put("4", 0.7);
 
-
-
         return Arrays.asList(new Object[][] {
                 {-1, map1, res1},
                 {-1, map2, res2},
@@ -90,7 +88,6 @@ public class UpdateMapTest {
                 {1, map2, res2},
                 {1, map3, res3},
                 {1, map4, res4},
-
                 {1, map5, res5}
         });
     }

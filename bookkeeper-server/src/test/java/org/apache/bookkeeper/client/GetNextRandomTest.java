@@ -48,14 +48,18 @@ public class GetNextRandomTest {
         WeightedRandomSelectionImpl<Object> randomSelection = new WeightedRandomSelectionImpl<>();
         randomSelection.randomMax = randomMax;
         randomSelection.cummulativeMap = map;
-        if (!map.values().isEmpty())
+        if (!map.values().isEmpty()) {
             assertTrue(map.containsValue(randomSelection.getNextRandom()));
+            //added after mutation analysis
+            assertTrue(randomSelection.rwLock.writeLock().tryLock());
+        }
         else
             try {
                 randomSelection.getNextRandom();
                 fail();
             } catch (Exception e) {
-
+                //added after mutation analysis
+                assertTrue(randomSelection.rwLock.writeLock().tryLock());
             }
     }
 }
