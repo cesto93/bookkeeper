@@ -1,6 +1,5 @@
 package org.apache.bookkeeper.client;
 
-import org.apache.commons.collections4.Get;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -14,7 +13,6 @@ public class GetNextRandomTest {
 
     private Double randomMax;
     private TreeMap<Double, Object> map;
-    private Object max;
 
     public GetNextRandomTest(Double randomMax, TreeMap<Double,Object> map) {
         this.randomMax = randomMax;
@@ -51,7 +49,7 @@ public class GetNextRandomTest {
         randomSelection.randomMax = randomMax;
         randomSelection.cummulativeMap = map;
         if (!map.values().isEmpty())
-            assertTrue(map.values().contains(randomSelection.getNextRandom()));
+            assertTrue(map.containsValue(randomSelection.getNextRandom()));
         else
             try {
                 randomSelection.getNextRandom();

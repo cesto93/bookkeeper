@@ -36,10 +36,12 @@ public class UpdateMapTest {
         Map<Object, WeightedObject> map2 = new HashMap<>();
         Map<Object, WeightedObject> map3 = new HashMap<>();
         Map<Object, WeightedObject> map4 = new HashMap<>();
+        Map<Object, WeightedObject> map5 = new HashMap<>();
         Map<Object, Double> res1 = new HashMap<>();
         Map<Object, Double> res2 = new HashMap<>();
         Map<Object, Double> res3 = new HashMap<>();
         Map<Object, Double> res4 = new HashMap<>();
+        Map<Object, Double> res5 = new HashMap<>();
 
         res1.put(null, 0.0);
 
@@ -62,6 +64,19 @@ public class UpdateMapTest {
         res4.put("2", 1.0 / 6.0);
         res4.put("3", 1.0 / 6.0 + 2.0 / 6.0);
 
+        //added after coverage goal
+
+        map5.put("1", getWeightedObject(4));
+        map5.put("2", getWeightedObject(3));
+        map5.put("3", getWeightedObject(2));
+        map5.put("4", getWeightedObject(1));
+        res5.put("1", 0.0 );
+        res5.put("2", 0.25);
+        res5.put("3", 0.5);
+        res5.put("4", 0.7);
+
+
+
         return Arrays.asList(new Object[][] {
                 {-1, map1, res1},
                 {-1, map2, res2},
@@ -74,13 +89,15 @@ public class UpdateMapTest {
                 {1, map1, res1},
                 {1, map2, res2},
                 {1, map3, res3},
-                {1, map4, res4}
+                {1, map4, res4},
+
+                {1, map5, res5}
         });
     }
 
     @Test
     public void testUpdateMap() {
-        WeightedRandomSelectionImpl<Object> randomSelection = new WeightedRandomSelectionImpl<>();
+        WeightedRandomSelectionImpl<Object> randomSelection = new WeightedRandomSelectionImpl<>(maxProbabilityMultiplier);
         randomSelection.updateMap(map);
 
         System.out.println(randomSelection.cummulativeMap.keySet());
