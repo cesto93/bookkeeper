@@ -24,36 +24,37 @@ public class CookieVerifyTest extends CookieTestUtils {
 
     @Parameters
     public static Collection verifyParam() {
-        Cookie[] cookies1 = {
+        final String valid_host = "192.168.1.1:80";
+        final String id1 = "id";
+        final String id2 = "id2";
+        Cookie[] cookies = {
                 getCookie(2, null, null, null, null),
                 getCookie(3, "", "", "", ""),
-                getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2", "2\tdir1\tdir2",
-                        "id")
+                getCookie(3, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir2", id1)
         };
 
         return Arrays.asList(new Object[][] {
-                {   cookies1[0], cookies1[0], true},
-                {   cookies1[0], cookies1[2], true},
-                {   cookies1[1], cookies1[1], false},
-                {   cookies1[1], cookies1[2], true},
-                {   cookies1[2], cookies1[2], false},
-                {   cookies1[2], cookies1[1], true},
+                {cookies[0], cookies[0], true},
+                {cookies[0], cookies[2], true},
+                {cookies[1], cookies[1], false},
+                {cookies[1], cookies[2], true},
+                {cookies[2], cookies[2], false},
+                {cookies[2], cookies[1], true},
 
                 //added after coverage analysis
-                { cookies1[1], cookies1[0], true},
-                { cookies1[2],  getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
-                        "2\tdir1\tdir2", "id2"), true},
+                {cookies[1], cookies[0], true},
+                {getCookie(3, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir2", id1),
+                getCookie(3, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir2", id2), true},
 
                 //added after mutation analysis
-                {cookies1[2], getCookie(3, "192.168.1.1:80", "2\tdir1\tdir2",
-                        "2\tdir1\tdir3", "id"), true},
-                {cookies1[2], getCookie(2, "192.168.1.1:80", "2\tdir1\tdir2",
-                        "2\tdir1\tdir3", "id2"), true},
-                {
-                    getCookie(2, "192.168.1.1:80", "2\tdir1\tdir2",
-                        "2\tdir1\tdir3", "id2"),
-                        getCookie(2, "192.168.1.1:80", "2\tdir1\tdir2",
-                        "2\tdir1\tdir3", "id2"), true}
+                {getCookie(3, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir2", id1),
+                getCookie(3, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir3", id1), true},
+
+                {getCookie(3, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir2", id1),
+                getCookie(2, valid_host,"2\tdir1\tdir2","2\tdir1\tdir3", id2), true},
+
+                {getCookie(2, valid_host, "2\tdir1\tdir2", "2\tdir1\tdir3", id2),
+                getCookie(2, valid_host,"2\tdir1\tdir2","2\tdir1\tdir3", id2), true}
         });
     }
 
