@@ -1,0 +1,4 @@
+bookkeeper-server.src.main.java.org.apache.bookeeper.bookie.Cookie.java
+bookkeeper-server.src.main.java.org.apache.bookeeper.client.WeightedRandomSelectionImpl.java
+
+I Test sono stati lanciati tramite maven
